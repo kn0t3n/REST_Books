@@ -34,5 +34,16 @@ public class CityResource {
         return "nicht gelöscht!";
     }
 
+    @PUT
+    @Produces({MediaType.TEXT_PLAIN})
+    @Consumes({MediaType.TEXT_PLAIN})
+    @Path("{id}")
+    public String updateCity(@PathParam("id")int id,String name){
+        City city = cityService.updateCity(id, name);
+        if(city != null){
+            return city.getName() + " wurde geändert auf " + name;
+        }
+        return "nicht geändert!";
+    }
 
 }

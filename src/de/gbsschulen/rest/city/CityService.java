@@ -34,11 +34,21 @@ public class CityService {
         return typedQuery.getResultList();
     }
 
-    public City deleteCity(int id){
+    public City deleteCity(int id) {
         City city = getCity(id);
-        if(city != null){
+        if (city != null) {
             em.getTransaction().begin();
             em.remove(city);
+            em.getTransaction().commit();
+        }
+        return city;
+    }
+
+    public City updateCity(int id, String name) {
+        City city = getCity(id);
+        if (city != null) {
+            em.getTransaction().begin();
+            em.createQuery("update table City b set b.name = " + name + " where id = " + id, City.class).executeUpdate();
             em.getTransaction().commit();
         }
         return city;
