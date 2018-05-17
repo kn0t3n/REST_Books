@@ -69,4 +69,13 @@ public class BookService {
             em.getTransaction().commit();
         }
     }
+
+    public void change(Book book){
+        if (book != null) {
+            em.getTransaction().begin();
+            em.merge(book);
+            em.flush();
+            em.getTransaction().commit();
+        }
+    }
 }
