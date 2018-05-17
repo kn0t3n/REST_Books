@@ -45,4 +45,17 @@ public class BookResource {
         Book book = bookService.getBook(id);
         return book;
     }
+
+
+        // curl  -H "content-type: application/json" -X PUT -d '{"id":55,"autor":"fdsaf","isbn":"2222","titel":"fdsaf"}' localhost:8080/rest/bookstore/createBook
+        // curl  -H "content-type: application/json" -X PUT -T file.json localhost:8080/rest/bookstore/createBook
+    @PUT
+    @Path("/createBook")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String putBook(Book book){
+        bookService.add(book);
+        System.out.println(book);
+        return "Hinzugefügt: " + book.getTitel();
+    }
 }

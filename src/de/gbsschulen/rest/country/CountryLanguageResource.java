@@ -17,6 +17,7 @@ public class CountryLanguageResource {
     }
 
     // localhost:8080/rest/bookstore/book?id=2
+   // http://localhost:8080/rest/countrylanguage/cl?id=ant&name=english
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/cl/")
